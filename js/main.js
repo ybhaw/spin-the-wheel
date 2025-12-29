@@ -40,6 +40,9 @@ class SpinTheWheelApp {
             sidebarCollapseBtn: document.getElementById('sidebar-collapse-btn'),
             sidebarExpandBtn: document.getElementById('sidebar-expand-btn'),
             sidebarResizeHandle: document.getElementById('sidebar-resize-handle'),
+            appTitle: document.getElementById('app-title'),
+            infoModal: document.getElementById('info-modal'),
+            modalClose: document.getElementById('modal-close'),
         };
 
         // Initialize wheel with callbacks
@@ -205,6 +208,18 @@ class SpinTheWheelApp {
         );
         document.addEventListener('mouseup', stopResize);
         document.addEventListener('touchend', stopResize);
+
+        // Info modal
+        el.appTitle.addEventListener('click', () => this.showInfoModal());
+        el.modalClose.addEventListener('click', () => this.hideInfoModal());
+        el.infoModal.addEventListener('click', (e) => {
+            if (e.target === el.infoModal) this.hideInfoModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !el.infoModal.classList.contains('hidden')) {
+                this.hideInfoModal();
+            }
+        });
     }
 
     // ===== Core Actions =====
@@ -287,6 +302,14 @@ class SpinTheWheelApp {
     hideToast() {
         this.el.toast.classList.remove('visible');
         this.el.toast.classList.add('hidden');
+    }
+
+    showInfoModal() {
+        this.el.infoModal.classList.remove('hidden');
+    }
+
+    hideInfoModal() {
+        this.el.infoModal.classList.add('hidden');
     }
 
     // ===== State Management =====
