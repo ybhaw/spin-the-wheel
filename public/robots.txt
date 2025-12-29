@@ -1,0 +1,8 @@
+# Robots.txt for Spin The Wheel
+# https://vaibhaw.github.io/spin-the-wheel/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://vaibhaw.github.io/spin-the-wheel/sitemap.xml
