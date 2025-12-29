@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Spin The Wheel</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <!-- Sidebar -->
+            <aside class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <h1>Spin The Wheel</h1>
+                    <button
+                        class="sidebar-collapse-btn"
+                        id="sidebar-collapse-btn"
+                        title="Collapse sidebar"
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="title-section">
+                    <label for="title-input">Wheel Title:</label>
+                    <input
+                        type="text"
+                        id="title-input"
+                        placeholder="my-wheel"
+                        autocomplete="off"
+                        spellcheck="false"
+                    />
+                </div>
+
+                <div class="input-section">
+                    <label for="names-input">Enter names (one per line):</label>
+                    <textarea
+                        id="names-input"
+                        placeholder="Alice&#10;Bob&#10;Charlie&#10;Diana&#10;Eve"
+                    >
+Alice
+Bob
+Charlie
+Diana
+Eve
+Frank
+Grace
+Henry</textarea
+                    >
+                </div>
+
+                <button id="spin-btn" class="spin-button">SPIN!</button>
+
+                <div class="settings-section">
+                    <button class="settings-toggle" id="settings-toggle">
+                        <span>Settings</span>
+                        <svg
+                            class="toggle-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="settings-content" id="settings-content">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="sound-enabled" checked />
+                            <span>Enable sound effects</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remove-winner" />
+                            <span>Remove winner after spin</span>
+                        </label>
+
+                        <div class="color-scheme-section">
+                            <label for="color-scheme">Color scheme:</label>
+                            <select id="color-scheme">
+                                <optgroup label="Diverging">
+                                    <option value="Spectral" selected>Spectral</option>
+                                    <option value="RdYlGn">Red-Yellow-Green</option>
+                                    <option value="RdYlBu">Red-Yellow-Blue</option>
+                                    <option value="RdBu">Red-Blue</option>
+                                    <option value="PiYG">Pink-Yellow-Green</option>
+                                    <option value="PRGn">Purple-Green</option>
+                                    <option value="BrBG">Brown-Teal</option>
+                                </optgroup>
+                                <optgroup label="Qualitative">
+                                    <option value="Set1">Set 1 (Bold)</option>
+                                    <option value="Set2">Set 2 (Muted)</option>
+                                    <option value="Set3">Set 3 (Pastel)</option>
+                                    <option value="Pastel1">Pastel 1</option>
+                                    <option value="Pastel2">Pastel 2</option>
+                                    <option value="Paired">Paired</option>
+                                    <option value="Dark2">Dark 2</option>
+                                    <option value="Accent">Accent</option>
+                                </optgroup>
+                                <optgroup label="Sequential">
+                                    <option value="Viridis">Viridis</option>
+                                    <option value="Plasma">Plasma</option>
+                                    <option value="Inferno">Inferno</option>
+                                    <option value="Magma">Magma</option>
+                                    <option value="Turbo">Turbo</option>
+                                    <option value="YlOrRd">Yellow-Orange-Red</option>
+                                    <option value="YlGnBu">Yellow-Green-Blue</option>
+                                    <option value="PuBuGn">Purple-Blue-Green</option>
+                                </optgroup>
+                                <optgroup label="Single Hue">
+                                    <option value="Blues">Blues</option>
+                                    <option value="Greens">Greens</option>
+                                    <option value="Oranges">Oranges</option>
+                                    <option value="Purples">Purples</option>
+                                    <option value="Reds">Reds</option>
+                                    <option value="Greys">Greys</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div class="background-image-section">
+                            <label for="background-image-input">Background image:</label>
+                            <input
+                                type="text"
+                                id="background-image-input"
+                                placeholder="Enter URL or select file"
+                                autocomplete="off"
+                            />
+                            <div class="background-image-actions">
+                                <label class="file-input-label">
+                                    <input
+                                        type="file"
+                                        id="background-image-file"
+                                        accept="image/*"
+                                    />
+                                    <span>Choose File</span>
+                                </label>
+                                <button
+                                    type="button"
+                                    id="background-image-clear"
+                                    class="clear-bg-btn"
+                                    title="Clear background"
+                                >
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="spin-time-section">
+                            <label for="spin-time-slider">Spin duration:</label>
+                            <div class="spin-time-controls">
+                                <input
+                                    type="range"
+                                    id="spin-time-slider"
+                                    min="0"
+                                    max="5000"
+                                    value="5000"
+                                    step="100"
+                                />
+                                <span id="spin-time-display">5.0s</span>
+                            </div>
+                            <div class="spin-time-input-row">
+                                <input
+                                    type="number"
+                                    id="spin-time-input"
+                                    min="0"
+                                    max="3600000"
+                                    value="5000"
+                                    step="100"
+                                    aria-label="Spin duration in milliseconds"
+                                />
+                                <span class="spin-time-unit">ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-resize-handle" id="sidebar-resize-handle"></div>
+            </aside>
+
+            <!-- Sidebar expand button -->
+            <button
+                class="sidebar-expand-btn hidden"
+                id="sidebar-expand-btn"
+                title="Expand sidebar"
+            >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Wheel area -->
+            <main class="wheel-container">
+                <div id="wheel-canvas"></div>
+            </main>
+        </div>
+
+        <!-- Winner Toast -->
+        <div id="winner-toast" class="toast hidden">
+            <span class="toast-label">Winner:</span>
+            <span id="toast-winner-name" class="toast-name"></span>
+        </div>
+
+        <script type="module" src="js/main.js"></script>
+    </body>
+</html>
