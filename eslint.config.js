@@ -6,6 +6,14 @@ export default [
     },
     js.configs.recommended,
     {
+        files: ['vite.config.js'],
+        languageOptions: {
+            globals: {
+                process: 'readonly',
+            },
+        },
+    },
+    {
         languageOptions: {
             ecmaVersion: 'latest',
             sourceType: 'module',
